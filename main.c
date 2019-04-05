@@ -18,20 +18,23 @@ static int fibo2(int nb)
 int main(int ac, char **av)
 {
 	(void)fibo2;
-//	char *str;
+	char *str;
 	char *str2;
 
 	if (ac != 2) { printf("usage: ./a.out [string]\n"); return (1); }
-//	str = ft_strdup(av[1]);
+	str = ft_strdup(av[1]);
 	str2 = strdup(av[1]);
 
-//	printf("%s\n", str);
+	printf("%s\n", str);
 	printf("%s\n", str2);
 
-	ft_memset(str2, 'W', 5);
+	ft_memset(str, 'W', 5);
+	memset(str2, 'W', 5);
+
+	printf("%s\n", str);
 	printf("%s\n", str2);
 
-//	free(str);
+	free(str);
 	free(str2);
 	return 0;
 }

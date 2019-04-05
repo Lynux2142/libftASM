@@ -16,7 +16,7 @@ libasm:
 	@$(MAKE) -sC $(LIBASM_DIR)
 
 $(NAME): libasm $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBASM)
+	@$(CC) $(CFLAGS) -no-pie -D LINUX $(OBJS) $(LIBASM)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I $(LIBASM_DIR) -c $^ -o $@

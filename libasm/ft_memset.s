@@ -3,15 +3,13 @@ section .text
 
 ft_memset:
 	enter	0, 0
-	push	rdi
+	mov		rax, rsi
 while:
 	cmp		rdx, 0
 	je		endw
-	mov		[rdi], rsi
-	inc		rdi
+	stosb
 	dec		rdx
 	jmp		while
 endw:
-	pop		rdi
 	leave
 	ret
