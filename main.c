@@ -17,16 +17,21 @@ static int fibo2(int nb)
 
 int main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
 	(void)fibo2;
-	char *str = (char*)malloc(sizeof(char) * ft_strlen(av[1]));
+//	char *str;
 	char *str2;
 
-	str = ft_strdup(av[1]);
+	if (ac != 2) { printf("usage: ./a.out [string]\n"); return (1); }
+//	str = ft_strdup(av[1]);
 	str2 = strdup(av[1]);
 
-	printf("%s\n", str);
+//	printf("%s\n", str);
 	printf("%s\n", str2);
+
+	ft_memset(str2, 'W', 5);
+	printf("%s\n", str2);
+
+//	free(str);
+	free(str2);
 	return 0;
 }
