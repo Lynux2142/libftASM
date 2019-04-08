@@ -6,19 +6,23 @@ section .text
 
 ft_strdup:
 	enter	0, 0
-	push	rdi
 	cmp		rdi, 0
 	je		exit
+	mov		rax, rdi
 	call	ft_strlen
-	mov		r9, rax
+	inc		rax
 	mov		r10, rdi
 	mov		rdi, rax
-	call	malloc wrt ..plt
+	push	r10
+	push	rdi
+	sub		rsp, 16
+	call	malloc
+	add		rsp, 16
+	pop		rcx
+	pop		rsi
 	mov		rdi, rax
-	mov		rsi, r10
-	mov		rdx, r9
-	call	ft_memcpy
-	pop		rax
+	cld
+	rep		movsb
 exit:
 	leave
 	ret
