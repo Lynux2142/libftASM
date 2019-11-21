@@ -6,7 +6,11 @@ LIBASM_DIR	= libasm
 LIBASM		= $(LIBASM_DIR)/libasm.a
 TEST		= -Werror
 CFLAGS		= -Wall -Wextra $(TEST) -g
-CC			= gcc
+CC		= gcc
+
+ifeq ($(SYS_OS), Linux)
+	LINUX_FLAG = -no-pie -D LINUX
+endif
 
 .PHONY: all libasm fclean clean re
 
@@ -16,7 +20,7 @@ libasm:
 	@$(MAKE) -sC $(LIBASM_DIR)
 
 $(NAME): libasm $(OBJS)
-	@$(CC) $(CFLAGS) -no-pie -D LINUX $(OBJS) $(LIBASM)
+	@$(CC) $(CFLAGS) $(LINUX_FLAG) $(OBJS) $(LIBASM)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I $(LIBASM_DIR) -c $^ -o $@

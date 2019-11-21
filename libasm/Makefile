@@ -4,13 +4,13 @@ SRCS		= $(addsuffix .s, ft_abs ft_fibo ft_bzero ft_strcat ft_isalpha ft_isdigit 
 OBJS		= $(SRCS:.s=.o)
 CFLAGS		= -g -f
 LFLAGS		= ar rc
-CC			= nasm
+CC		= nasm
 
 ifeq ($(SYS_OS), Linux)
 	CFLAGS += elf64
 	PREFIX = -dLINUX=1
 else
-	CFLAGS += machos64
+	CFLAGS += macho64
 	PREFIX = --prefix _ -dOSX=1
 endif
 
